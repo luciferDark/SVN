@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.ll.ui.SvnFilterActivitiesPanel">
+  <grid id="27dc6" binding="panel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+    <constraints>
+      <xy x="20" y="20" width="878" height="417"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="a076a" class="javax.swing.JLabel">
+        <constraints/>
+        <properties>
+          <text value="合并路径："/>
+        </properties>
+      </component>
+      <component id="98a88" class="javax.swing.JComboBox" binding="mCountries">
+        <constraints/>
+        <properties>
+          <model/>
+        </properties>
+      </component>
+      <component id="13cc0" class="javax.swing.JComboBox" binding="mBranches">
+        <constraints/>
+        <properties/>
+      </component>
+      <component id="55b43" class="javax.swing.JButton" binding="mSwitchPath">
+        <constraints/>
+        <properties>
+          <text value="切换"/>
+        </properties>
+      </component>
+      <component id="e5156" class="javax.swing.JComboBox" binding="mSvnPath">
+        <constraints/>
+        <properties>
+          <preferredSize width="550" height="38"/>
+        </properties>
+      </component>
+      <component id="63d5a" class="javax.swing.JLabel">
+        <constraints/>
+        <properties>
+          <text value="搜索条件(请用,或|分割不同条件)"/>
+        </properties>
+      </component>
+      <component id="496c3" class="javax.swing.JTextArea" binding="mConditions">
+        <constraints/>
+        <properties>
+          <font swing-font="ComboBox.font"/>
+          <preferredSize width="550" height="42"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="debcf" class="javax.swing.JLabel">
+        <constraints/>
+        <properties>
+          <text value="排除条件(请用,或|分割不同条件)"/>
+        </properties>
+      </component>
+      <component id="9eeeb" class="javax.swing.JTextArea" binding="mExclude">
+        <constraints/>
+        <properties>
+          <font swing-font="ComboBox.font"/>
+          <preferredSize width="550" height="42"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="7e745" class="javax.swing.JButton" binding="mStartSearchBtn">
+        <constraints/>
+        <properties>
+          <label value="搜索"/>
+          <text value="搜索"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

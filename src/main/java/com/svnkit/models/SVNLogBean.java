@@ -1,6 +1,8 @@
 package com.svnkit.models;
 
 import com.Util.TimeFormat;
+import com.svnkit.SvnUtils;
+import org.tmatesoft.svn.core.SVNLogEntry;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,6 +17,14 @@ public class SVNLogBean {
 
     public SVNLogBean(){
 
+    }
+
+    public SVNLogBean(SVNLogEntry entry){
+        this.revision = entry.getRevision();
+        this.author = entry.getAuthor();
+        this.date = entry.getDate();
+        this.message = entry.getMessage();
+        this.paths =SvnUtils.getPathList(entry.getChangedPaths());
     }
 
     public SVNLogBean(long revision, String author, Date date, String message, List<SVNKindBean> paths) {
@@ -93,7 +103,8 @@ public class SVNLogBean {
         });
         return builder.toString().trim();
     }
-        @Override
+
+    @Override
     public String toString() {
         return
                 "Revision: " + revision +

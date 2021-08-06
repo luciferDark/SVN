@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.ll.ui.MainPanel">
+  <grid id="27dc6" binding="panelMain" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="630" height="605"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <tabbedpane id="4ab1" binding="tablePanelContainer">
+        <constraints/>
+        <properties>
+          <preferredSize width="600" height="300"/>
+          <tabLayoutPolicy value="1"/>
+        </properties>
+        <border type="line">
+          <color color="-5194043"/>
+        </border>
+        <children/>
+      </tabbedpane>
+      <grid id="c886d" binding="resultPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints/>
+        <properties>
+          <preferredSize width="600" height="300"/>
+        </properties>
+        <border type="line" title="结果">
+          <title-color color="-5194043"/>
+          <color color="-15022692"/>
+        </border>
+        <children/>
+      </grid>
+    </children>
+  </grid>
+</form>
