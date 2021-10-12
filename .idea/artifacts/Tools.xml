@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Tools">
+    <output-path>$PROJECT_DIR$/out/artifacts/Tools</output-path>
+    <root id="archive" name="com.ll.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="com.ll_main" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/net.java.dev.jna_4.1.0.v06022015_1911.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/com.trilead.ssh2_1.0.0.build222_185.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/org.tmatesoft.sqljet_1.1.14.r1345.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/datepicker.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/org.tmatesoft.svnkit_1.10.3.r10808.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/beautyeye_lnf.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.2.7/a5c721e8ea1e18854272879d6ed2770d25feb342/fastjson-1.2.7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

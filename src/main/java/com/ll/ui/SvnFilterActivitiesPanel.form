@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.ll.ui.SvnFilterActivitiesPanel">
   <grid id="27dc6" binding="panel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
     <constraints>
-      <xy x="20" y="20" width="878" height="417"/>
+      <xy x="20" y="20" width="961" height="417"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -27,6 +27,13 @@
         <constraints/>
         <properties>
           <text value="切换"/>
+        </properties>
+      </component>
+      <component id="b523f" class="javax.swing.JButton" binding="mShowLogBtn">
+        <constraints/>
+        <properties>
+          <enabled value="true"/>
+          <text value="日志"/>
         </properties>
       </component>
       <component id="e5156" class="javax.swing.JComboBox" binding="mSvnPath">

@@ -33,7 +33,7 @@ public class Main {
         MainPanel startPanel = new MainPanel();
         mainFrame.setContentPane(startPanel.getMainPanel());
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setBounds(100, 100, 650, 640);
+        mainFrame.setBounds(100, 100, 630, 660);
         mainFrame.setVisible(true);
         mainFrame.setResizable(false);
         String title = "㊎㊌㊍㊋㊏五行齐聚bug全无 - By 麒麟";

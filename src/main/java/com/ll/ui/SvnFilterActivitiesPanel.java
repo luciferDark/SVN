@@ -4,6 +4,7 @@ import com.Util.DialogUtil;
 import com.Util.Log;
 import com.Util.Util;
 import com.svnkit.Contants;
+import com.svnkit.SVNCmdHelper;
 import com.svnkit.SVNHelper;
 import com.svnkit.models.SVNKitBean;
 
@@ -21,6 +22,7 @@ public class SvnFilterActivitiesPanel extends BasePanel {
     private JTextArea mExclude;
     private JButton mStartSearchBtn;
     private JButton mSwitchPath;
+    private JButton mShowLogBtn;
     private JTextArea mResultArea;
 
     List<SVNKitBean> svnChannelList;
@@ -90,22 +92,50 @@ public class SvnFilterActivitiesPanel extends BasePanel {
                 return;
             }
             String conditions = mConditions.getText().trim();
+            if (Util.isStringEmpty(conditions)){
+                DialogUtil.showMessageDialog(
+                        "老板，有问题！",
+                        "想要结果，你总得给我个搜索条件吧。我凭空给你想啊？");
+                return;
+            }
+            StringBuilder result = new StringBuilder("搜索中... ...");
+            mResultArea.setText(result.toString());
             String excludes = mExclude.getText().trim();
             String[] mConditions = conditions.split("\\||,");
             String[] mExcludes = Util.isStringEmpty(excludes) ? null : excludes.split("\\||,");
             List<String> mConditionList = Arrays.asList(mConditions);
             List<String> mExcludesList = Util.isEmpty(mExcludes) ? null : Arrays.asList(mExcludes);
             if (null != mResultArea) {
-                String result = SVNHelper.getInstance().getVersionsByLog(svnPath, mConditionList, mExcludesList).toString();
-                mResultArea.setText(result);
+                result = new StringBuilder();
+                List svnVersions = SVNHelper.getInstance().getVersionsByLog(svnPath, mConditionList, mExcludesList);
+                Log.log(svnVersions.toString());
+                for (int i = 0; i < svnVersions.size(); i++) {
+                    result.append(svnVersions.get(i));
+                    if (i != svnVersions.size() - 1){
+                        result.append(", ");
+                    }
+                }mResultArea.setText(result.toString());
             }
         });
 
         mSwitchPath.addActionListener(event ->
                 switchReportiesPathUrlUI()
         );
-    }
 
+        mShowLogBtn.addActionListener(
+                event ->{String svnPath = getRealSvnPath((String) mSvnPath.getSelectedItem());
+                    if (Util.isStringEmpty(svnPath)){
+                        DialogUtil.showMessageDialog(
+                                "老板，有问题！",
+                                "svn 路径是空的请检查");
+                        return;
+                    }
+                    Log.log("获取到svn路径：", svnPath);
+                    SVNCmdHelper.log(svnPath);
+                }
+        );
+
+    }
 
     @Override
     public String getTitleName() {

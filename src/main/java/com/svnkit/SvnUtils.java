@@ -63,7 +63,7 @@ public class SvnUtils {
             // 判断满足条件
             if (null != conditions) {
                 for (String condition : conditions) {
-                    if (log.toLowerCase().contains(condition)) {
+                    if (log.toLowerCase().contains(condition.toLowerCase())) {
                         include = true;
                         break;
                     }
@@ -72,7 +72,7 @@ public class SvnUtils {
             //判断排除条件
             if (null != excludeConditions && include) {
                 for (String exclude : excludeConditions) {
-                    if (log.toLowerCase().contains(exclude)) {
+                    if (log.toLowerCase().contains(exclude.toLowerCase())) {
                         include = false;
                         break;
                     }
@@ -82,24 +82,28 @@ public class SvnUtils {
             if (include && excludeConfigs) {
                 if (log.toLowerCase().contains("配置")) {
                     List<SVNKindBean> paths = svnLogBean.getPaths();
+                    boolean isAllConfigs = true;
                     String path = "";
                     for (SVNKindBean item : paths) {
                         path = item.getPath().toLowerCase();
-                        if (!(path.endsWith(".lua") && !path.contains("lua/data/")) &&  //策划配置的提交， 不包含非配置的lua文件
-                                !(path.contains("string.lua")) &&   //策划配置的提交， 不包含string文件
-                                !(path.contains("uistring.lua")) &&   //策划配置的提交， 不包含uistring文件
-                                !(path.contains(".prefab")) &&   //策划配置的提交， 不包含prefab文件
-                                !(path.contains(".mat")) &&   //策划配置的提交， 不包含mat文件
-                                !(path.contains(".png")) &&   //策划配置的提交， 不包含png文件
-                                !(path.contains(".anim")) &&   //策划配置的提交， 不包含anim文件
-                                !(path.contains(".mp4")) &&   //策划配置的提交， 不包含mp4文件
-                                !(path.contains(".mp3") && !path.contains("/download/") && !path.contains("/audios/phone_")) &&   //策划配置的提交， 不包含非download路径下的mp3文件
-                                !(path.contains(".controller"))  //策划配置的提交， 不包含controller文件
+                        if (
+                                !(!(path.endsWith(".lua") && !path.contains("lua/data/")) &&  //策划配置的提交， 不包含非配置的lua文件
+                                        !(path.contains("string.lua")) &&   //策划配置的提交， 不包含string文件
+                                        !(path.contains("uistring.lua")) &&   //策划配置的提交， 不包含uistring文件
+                                        !(path.contains(".prefab")) &&   //策划配置的提交， 不包含prefab文件
+                                        !(path.contains(".mat")) &&   //策划配置的提交， 不包含mat文件
+                                        !(path.contains(".png")) &&   //策划配置的提交， 不包含png文件
+                                        !(path.contains(".anim")) &&   //策划配置的提交， 不包含anim文件
+                                        !(path.contains(".mp4")) &&   //策划配置的提交， 不包含mp4文件
+                                        !(path.contains(".mp3") && !path.contains("/download/") && !path.contains("/audios/phone_")) &&   //策划配置的提交， 不包含非download路径下的mp3文件
+                                        !(path.contains(".controller")))  //策划配置的提交， 不包含controller文件
                         ) {
-                            include = false;
+                            isAllConfigs = false;
                             break;
                         }
                     }
+                    if (isAllConfigs)
+                        include = false;
 
                     StringBuilder builder = new StringBuilder();
                     for (SVNKindBean svnLogBeanPath : svnLogBean.getPaths()) {
@@ -126,6 +130,8 @@ public class SvnUtils {
                             ((path.contains("lua/data") && path.endsWith(".lua")) ||
                                     (path.contains("design/excel_config") && path.endsWith(".xlsx")) ||
                                     (path.contains("design/") && path.endsWith("国服表格工具.xlsm")) ||
+                                    (path.contains("design/") && path.endsWith("表格工具v2.xlsm")) ||
+                                    (path.contains("design/server_tool_exe") && path.endsWith(".xlsx")) ||
                                     (path.contains("design/server_tool_exe") && path.endsWith(".csv")))
                     ) {
                         isAllConfigs = false;
