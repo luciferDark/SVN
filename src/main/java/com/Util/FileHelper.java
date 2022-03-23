@@ -5,6 +5,11 @@ import java.util.List;
 
 public class FileHelper {
     private FileReadLineCallback mFileReadLineCallback = null;
+    private ReadLineCallback mReadLineCallback = null;
+
+    public interface ReadLineCallback {
+        public void readlineCallback(String line);
+    }
 
     public interface FileReadLineCallback {
         public void readSVNFilerCallback(String line);
@@ -23,6 +28,14 @@ public class FileHelper {
 
     public void setFileReadLineCallback(FileReadLineCallback mFileReadLineCallback) {
         this.mFileReadLineCallback = mFileReadLineCallback;
+    }
+
+    public ReadLineCallback getReadLineCallback() {
+        return mReadLineCallback;
+    }
+
+    public void setReadLineCallback(ReadLineCallback mReadLineCallback) {
+        this.mReadLineCallback = mReadLineCallback;
     }
 
     /**
@@ -92,6 +105,10 @@ public class FileHelper {
                         mFileReadLineCallback.readSVNLogCallback(tempString);
                     }
                 }
+
+                if (mReadLineCallback != null){
+                    mReadLineCallback.readlineCallback(tempString);
+                }
                 line++;
             }
             reader.close();
@@ -122,6 +139,9 @@ public class FileHelper {
             // 一次读入一行，直到读入null为文件结束
             while ((tempString = reader.readLine()) != null) {
                 builder.append(tempString).append("\n");
+                if (mReadLineCallback != null){
+                    mReadLineCallback.readlineCallback(tempString);
+                }
             }
             reader.close();
         } catch (IOException e) {

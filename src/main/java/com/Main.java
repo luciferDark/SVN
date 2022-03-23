@@ -4,8 +4,8 @@ import com.JsonParse.bean.FilterContants;
 import com.JsonParse.bean.FilterItemBean;
 import com.Util.FileHelper;
 import com.Util.Log;
-import com.alibaba.fastjson.JSON;
 import com.ll.ui.MainPanel;
+import com.test.BeComparaListResultAnalytics;
 import org.jb2011.lnf.beautyeye.*;
 
 import javax.swing.*;
@@ -23,6 +23,12 @@ public class Main {
         initBeautyEye();
         showPanel();
 //        test3();
+//        test4();
+    }
+
+    private static void test4() {
+        BeComparaListResultAnalytics beComparaListResultAnalytics = new BeComparaListResultAnalytics();
+        beComparaListResultAnalytics.init();
     }
 
     /**
@@ -105,7 +111,7 @@ public class Main {
         FileHelper helper = new FileHelper();
         String contants = new FileHelper().readFileByLines(file);
 //        Log.log("====get contants\n", contants);
-        FilterContants result = JSON.parseObject(contants, FilterContants.class);
+        FilterContants result = null;
 //        Log.log("====get result\n", result.toMyString());
         List<FilterItemBean> beans = result.getPackages();
         List<Integer> activityIds = new ArrayList<>();
